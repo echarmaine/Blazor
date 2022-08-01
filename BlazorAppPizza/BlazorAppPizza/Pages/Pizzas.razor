@@ -1,0 +1,45 @@
+﻿@page "/PizzaMenu"
+@inject HttpClient Client
+
+
+<PageTitle>PizzaMenu</PageTitle>
+
+
+<h1>Pizzas Menu</h1>
+<div class="text-center">
+     <div class="mainText">
+         <h1 class="display-4 mainText-capitalize text-black">Our great slection of Pizzas!</h1>
+         <h4>Choose from our Pizza menu, or try our Pizza Builder! </h4>
+         <h4>Order and Done!</h4> 
+         <h4>We deliver your pizza right at your doorstep. Easy and convenient!</h4>
+         <p class="smallText><i>Only one pizza per order.<i>"></p>
+     </div>
+
+
+     <div class="container"> 
+         <form method="get" action="Checkout/Checkout" >
+             <div class="row">
+                @*@foreach (var pizza in fakePizzaDB)
+                     {
+                             var imagePath = "~/images/Pizzas/" + (pizza.ImageTitle + ".png");
+                                              
+                             <div class="col-md-4">
+                                 <label class="col-md-12">
+                                     <input type="checkbox" style="width:30px; height:30px; margin-top:50px;" name="PizzaName" value="@pizza.PizzaName">
+                                     <img src="@imagePath" class="w-100" asp-append-version="true"/>
+                                 </label>
+                             </div> 
+                      }
+ 
+                     <div class="row">
+                        <button type="submit" class="btn btn-primary mt-5">Place Order</button>
+                     </div>   *@  
+             </div>
+         </form>
+    </div> 
+ </div>
+
+@code {
+
+
+}

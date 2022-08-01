@@ -1,0 +1,66 @@
+﻿@page "/"
+
+
+<PageTitle>Home</PageTitle>
+
+<h1>C# Pizza</h1>
+
+Welcome to C# Pizza.
+<img src="/images/PizzaTime.png" />
+    @foreach(var pizza in pizzaList)
+    {
+                         
+                             <div class="col-md-4">
+                                 <button @onclick="() => DeleteItem(pizza.PizzaName)">Delete</button>
+                                 <label class="col-md-12">
+                                     <input type="checkbox" style="width:30px; height:30px; margin-top:50px;" name="PizzaName" value="@pizza.PizzaName">
+                                     <img src="/images/Pizzas/@(pizza.ImageTitle).png" class="w-100" />
+                                 </label>
+                             </div> 
+    }
+
+<div>
+    <h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<p role="status">Current count: @currentCount</p>
+
+<p role="status">Current count: @currentCount</p>
+
+<p role="status">Current count: @currentCount</p>
+
+
+<p role="status">Current count: @(currentCount + 1)</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+</div>
+
+@code{
+    List<Data.PizzaMenu> pizzaList;
+    //protected override void OnInitialized()
+    //{
+    //    pizzaList = Data.PizzaMenuList.PizzaList;
+    //}
+
+    protected override async Task OnInitializedAsync()
+    {
+        pizzaList = await Data.PizzaMenuList.GetPizzaList();
+    }
+
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+    public void DeleteItem(string pizzaName)
+    {
+        var pizza = pizzaList.First(d => d.PizzaName == pizzaName);
+
+        pizzaList.Remove(pizza);
+
+    }
+}
